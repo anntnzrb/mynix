@@ -15,8 +15,9 @@ in
   };
 
   # ---------------------------------------------------------------------------
-  # X11 (Xorg)
+  # windowing system
   # ---------------------------------------------------------------------------
+  # X11
 
   xsession.windowManager.awesome.enable = true;
 
@@ -118,6 +119,14 @@ in
 
     # other
     dconf # GTK-themes
+
+    # audio
+    pamixer
+    pasystray
+    pulsemixer
+
+    # network
+    networkmanagerapplet
 
     # -------------------------------------------------------------------------
     # overrides & overlays

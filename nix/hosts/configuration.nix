@@ -61,6 +61,25 @@
   };
 
   # ---------------------------------------------------------------------------
+  # windowing system
+  # ---------------------------------------------------------------------------
+  # X11
+  ## configuration should be set using home-manager, the following are very
+  ## general rules, e.g: X11 not to launch automatically, disable DM, etc...
+
+  services.xserver = {
+    enable                       = true;
+    autorun                      = false;
+    displayManager.startx.enable = true;
+
+    # libinput
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+    };
+  };
+
+  # ---------------------------------------------------------------------------
   # console
   # ---------------------------------------------------------------------------
 
@@ -83,25 +102,6 @@
   # set your time zone
   time.timeZone      = "America/Guayaquil";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # ---------------------------------------------------------------------------
-  # windowing system
-  # ---------------------------------------------------------------------------
-  # X11
-  ## configuration should be set using home-manager, the following are very
-  ## general rules, e.g: X11 not to launch automatically, disable DM, etc...
-
-  services.xserver = {
-    enable                       = true;
-    autorun                      = false;
-    displayManager.startx.enable = true;
-
-    # libinput
-    libinput = {
-      enable = true;
-      mouse.accelProfile = "flat";
-    };
-  };
 
   # ---------------------------------------------------------------------------
   # users
@@ -154,13 +154,8 @@
     exa
     ripgrep
 
-    # audio
-    pamixer
-    pasystray
-    pulsemixer
-
-    # network
-    networkmanagerapplet
+    # misc
+    woeusb  # flash Windows iso
   ];
 
   # disable some graphical SSH password asker
@@ -197,7 +192,7 @@
     # SSH
     openssh.enable = true;
 
-    # audio
+    # audio -- FIXME :: move to home-manager whenever available
     pipewire = {
       enable       = true;
       audio.enable = true;
