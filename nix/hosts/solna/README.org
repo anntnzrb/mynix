@@ -1,0 +1,26 @@
+#+title:    Solna
+#+author:   anntnzrb
+#+language: en
+
+/Solna/ is my underpowered travelling laptop, meant for very basic stuff; i
+tend to use it via /TTY/ a lot if i'm honest.
+
+* table of contents :toc:noexport:
+- [[#specs][specs]]
+- [[#installation][installation]]
+
+* specs
+
+|-----------+-------|
+| component | desc  |
+|-----------+-------|
+| *cpu*     | FIXME |
+| *gpu*     | FIXME |
+| *ram*     | FIXME |
+| *storage* | FIXME |
+|-----------+-------|
+
+* installation
+
+the following host follows the generic host installation, found at
+[[file:../README.org::*installation][README#installation]].

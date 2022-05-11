@@ -1,0 +1,25 @@
+#+title:    Zadar
+#+author:   anntnzrb
+#+language: en
+
+/Zadar/ is my "gaming" laptop.
+
+* table of contents :toc:noexport:
+- [[#specs][specs]]
+- [[#installation][installation]]
+
+* specs
+
+|-----------+--------------------------------|
+| component | desc                           |
+|-----------+--------------------------------|
+| *cpu*     | [[https://ark.intel.com/content/www/us/en/ark/products/97185/intel-core-i77700hq-processor-6m-cache-up-to-3-80-ghz.html][Intel Core i7-7700HQ]]           |
+| *gpu*     | NVIDIA GeForce GTX 1060 Mobile |
+| *ram*     | FIXME                          |
+| *storage* | FIXME                          |
+|-----------+--------------------------------|
+
+* installation
+
+the following host follows the generic host installation, found at
+[[file:../README.org::*installation][README#installation]].

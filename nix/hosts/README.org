@@ -1,0 +1,201 @@
+#+title:    hosts & configurations
+#+author:   anntnzrb
+#+language: en
+
+* table of contents :toc:noexport:
+- [[#systems][systems]]
+- [[#installation][installation]]
+  - [[#nomenclature][nomenclature]]
+  - [[#partitioning][partitioning]]
+  - [[#formatting][formatting]]
+  - [[#mounting][mounting]]
+  - [[#finalization][finalization]]
+- [[#faq][faq]]
+  - [[#swap][swap]]
+- [[#troubleshooting][troubleshooting]]
+  - [[#formatting-1][formatting]]
+  - [[#grub-and-mounting-issues][GRUB and mounting issues]]
+
+* systems
+
+|----------+------------------------|
+| host     | overview               |
+|----------+------------------------|
+| *Munich* | main driver desktop PC |
+| *Zadar*  | "gaming" laptop        |
+| *Solna*  | traveling laptop       |
+|----------+------------------------|
+
+* installation
+
+the following instructions are described for /UEFI/ systems; make sure *fast
+boot* and *secure boot* are both disabled as they usually cause issues with
+systems other than Windows.
+
+*NOTE*: as stated, the following are generic instructions for /most/ hosts,
+refer to each host's =README= for detailed instructions.
+
+** nomenclature
+
+systems vary, some people might have a *SSD/NVMe*, *HDD* and so on; not to
+mention partition schemes.
+
+for simplicity's sake:
+
+- =/dev/<DISK>= the device (storage) where the installation goes
+  - check your block devices with =lsblk=
+- =/dev/<PART-ROOT>= refers to the root partition (=/=)
+- =/dev/<PART-BOOT>= refers to the boot partition (EFI Partition) (=/boot=)
+
+*NOTE*: you may safely ignore the commands over-quotation, it's really only
+used in here for syntax highlighting.
+
+#+begin_src shell
+# these two are equivalent
+mkfs.ext4 -L 'NIX-ROOT' '/dev/<PART-ROOT>'
+mkfs.ext4 -L NIX-ROOT /dev/<PART-ROOT>
+#+end_src
+
+** partitioning
+
+*scheme*:
+
+=lsblk /dev/<DISK>=
+
+#+begin_src shell
+NAME             MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+/dev/nvme0n1     259:0    0 476.9G  0 disk
+├─/dev/nvme0n1p1 259:1    0     1G  0 part /boot
+└─/dev/nvme0n1p2 259:2    0   240G  0 part /nix/store
+#+end_src
+
+1. partition the disk with tool of choice, personally use =cfdisk=.
+
+   - =1GB= for =/boot= (EFI Partition)
+   - =/= size is personal
+
+2. make sure to choose *EFI Partition* under *Type* when creating the =/boot=
+   partition using =cfdisk=.
+
+3. (OPTIONAL) enable the *ESP* flag for the =/boot= partition
+
+   #+begin_src shell
+   parted '/dev/<DISK>' --- set <POS> esp on
+   #+end_src
+
+   - =POS= is the partition number; you can tell on my *scheme* the =/boot=
+     partition is on the first partition (=/dev/nvme0n1p1=) -> (=p1=)
+
+4. [[*swap][what about SWAP??]]
+
+by now you should have both =/dev/<PART-ROOT>= and =/dev/<PART-BOOT>=.
+
+** formatting
+
+this system is currently using the *BTRFS* filesystem to take advantage of
+features such as *compression*, *ssd*-tunning, and a few others.
+
+*NOTE*: it is very important to set up the partitions with its respective
+label, /NixOS/ install the system automatically by identifying these labels.
+
+1. the =/boot= partition (EFI Partition)
+
+   #+begin_src shell
+   mkfs.vfat -n 'NIX-BOOT' '/dev/<PART-BOOT>'
+   #+end_src
+
+2. the =/= partition (root)
+
+   #+begin_src shell
+   mkfs.btrfs -f -L 'NIX-ROOT' '/dev/<PART-ROOT>'
+   #+end_src
+
+3. check results with =blkid=
+
+*TROUBLESHOOTING*: if you are experiencing issues with labels or formatting in
+general, refer to the following section [[troubleshooting][README#troubleshooting]].
+
+** mounting
+
+1. as this system uses an /EFI Partition/, the corresponding mounting folder is
+   needed.
+
+   #+begin_src shell
+   mkdir -p '/mnt/boot'
+   #+end_src
+
+2. the =/boot= partition (EFI Partition)
+
+   #+begin_src shell
+   mount -t vfat '/dev/disk/by-label/NIX-BOOT' '/mnt/boot'
+   #+end_src
+
+3. the =/= partition (root)
+
+   #+begin_src shell
+   mount -t btrfs '/dev/disk/by-label/NIX-ROOT' '/mnt'
+   #+end_src
+
+** finalization
+
+now that the system is partitioned, formatted and mounted, it's possible to
+install the system.
+
+#+begin_src shell
+nixos-install --root /mnt --flake 'gitlab:anntnzrb/xnixrice#host'
+#+end_src
+
+- concrete example: =nixos-install --root /mnt --flake gitlab:anntnzrb/xnixrice#zadar=
+
+*TROUBLESHOOTING*: if you get a *GRUB* error about =/boot= (or related), refer
+to the following section [[troubleshooting][README#troubleshooting]].
+
+finally you'll be prompted for a root password, enter it and =reboot=; don't
+forget to change the user's password as it has an initial (public) value set.
+
+#+begin_src shell
+passwd <user>
+#+end_src
+
+* faq
+
+** swap
+
+ever since switching to *NixOS* i've stopped using the traditional swap
+partition, currently [[https://www.kernel.org/doc/html/latest/admin-guide/blockdev/zram.html][ZRAM]] is what i'm using with positive results; this also
+makes partitioning schemes simpler.
+
+you can refer to each host's =README= for extra info (if any) and/or check its
+respective =hardware-configuration.nix= file.
+
+* troubleshooting
+
+** formatting
+
+if you are experiencing issues with labels or formatting in general, you can
+format a desired partition with other filesystem to somehow "reset" it and then
+apply the correct formatting again; /e.g/:
+
+the following example attempts to obtain a successful /BTRFS/ filesystem:
+
+-> /ext4/
+
+#+begin_src shell
+mkfs.ext4 -L 'NIX-ROOT' '/dev/<PART-ROOT>'
+#+end_src
+
+-> /btrfs/
+
+#+begin_src shell
+mkfs.btrfs -f -L 'NIX-ROOT' '/dev/<PART-ROOT>'
+#+end_src
+
+** GRUB and mounting issues
+
+if you get a *GRUB* error about =/boot= (or related), you may need to re-mount
+named partition, /i.e/ running the following again:
+
+#+begin_src shell
+mkdir -p '/mnt/boot'
+mount -t vfat '/dev/disk/by-label/NIX-BOOT' '/mnt/boot'
+#+end_src
