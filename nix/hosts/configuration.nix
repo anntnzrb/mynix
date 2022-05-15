@@ -123,17 +123,23 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # essentials
     curl
-    wget
     git
     gnumake
+    wget
 
-    # editors
-    vim
+    # core utils
+    coreutils-full
+    bat
+    exa
+    fd
+    ripgrep
 
     # utils
     atool
     file
+    fzf
     htop
     imagemagick
     rar
@@ -148,11 +154,8 @@
     man-pages
     man-pages-posix
 
-    # core utilities
-    coreutils-full
-    bat
-    exa
-    ripgrep
+    # editors
+    vim
 
     # misc
     woeusb  # flash Windows iso
