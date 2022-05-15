@@ -98,7 +98,8 @@ in
     yt-dlp
     maim
     neofetch
-    stow
+    bitwarden-cli
+    chezmoi
 
     # editors
     emacsNativeComp
