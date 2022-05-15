@@ -126,7 +126,7 @@ in
     pasystray
     pulsemixer
 
-    # networks
+    # network
     networkmanagerapplet
 
     # -------------------------------------------------------------------------
