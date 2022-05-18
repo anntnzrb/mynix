@@ -87,7 +87,9 @@ in
     # apps
     alacritty
     feh
+    firefox-esr    # non-chromium based backup browser
     joplin-desktop
+    mpv
     pcmanfm
     zathura
 
@@ -95,11 +97,12 @@ in
     redshift
 
     # utils
-    yt-dlp
-    maim
-    neofetch
     bitwarden-cli
     chezmoi
+    maim
+    neofetch
+    screenkey
+    yt-dlp
 
     # editors
     emacsNativeComp

@@ -180,6 +180,7 @@
       fira-code
       font-awesome
       inconsolata
+      iosevka
       jetbrains-mono
       mononoki
       noto-fonts-emoji
