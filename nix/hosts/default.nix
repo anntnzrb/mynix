@@ -1,6 +1,6 @@
 # default.nix --- Declaration of hosts
 
-{ self, lib, inputs, nixpkgs, home-manager, user, ... }:
+{ self, lib, inputs, nixpkgs, nur, home-manager, user, ... }:
 
 let
   hostsFolder = "${self}/nix/hosts/";
@@ -43,6 +43,7 @@ in {
     modules = [
       ./munich
       ./configuration.nix
+      { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs   = true;
@@ -70,6 +71,7 @@ in {
     modules = [
       ./solna
       ./configuration.nix
+      { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs   = true;
@@ -97,6 +99,7 @@ in {
     modules = [
       ./zadar
       ./configuration.nix
+      { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs   = true;
