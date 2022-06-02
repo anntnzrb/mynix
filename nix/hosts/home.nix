@@ -58,8 +58,35 @@ in
     # apps
     # -------------------------------------------------------------------------
 
+    firefox = {
+      enable     = true;
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        # tools
+        bitwarden
+        buster-captcha-solver
+        clearurls
+        darkreader
+        https-everywhere
+        ublock-origin
+        vimium
+
+        # twitch
+        betterttv
+      ];
+      profiles = {
+        default = {
+          bookmarks = {
+            wikipedia = {
+              keyword = "wiki";
+              url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+            };
+           };
+        };
+      };
+    };
+
     chromium = {
-      enable          = true;
+      enable          = false;
       commandLineArgs = [
         "--disable-gpu" # sometimes causes flickering issues
       ];
@@ -87,7 +114,6 @@ in
     # apps
     alacritty
     feh
-    firefox-esr    # non-chromium based backup browser
     joplin-desktop
     mpv
     pcmanfm
