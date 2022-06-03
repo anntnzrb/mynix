@@ -5,8 +5,6 @@
 {
   home = {
     packages = with pkgs; [
-      teams
-      zoom-us
       libreoffice-still
 
       # LaTeX/pandoc

@@ -5,8 +5,7 @@
 {
   home = {
     packages = with pkgs; [
-      teams
-      zoom-us
+        file # ex
     ];
   };
 }
