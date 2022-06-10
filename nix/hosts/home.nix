@@ -4,6 +4,7 @@
 
 let
   userGitlab = "https://gitlab.com/anntnzrb";
+  userSourceHut = "https://git.sr.ht/~anntnzrb";
 in
 {
   home = {
@@ -270,10 +271,26 @@ in
     # overrides & overlays
     # -------------------------------------------------------------------------
 
+    # my custom build of dwm
+    (dwm.overrideAttrs (oldAttrs: rec {
+      src = builtins.fetchTarball {
+        url    = "${userSourceHut}/dwm/archive/main.tar.gz";
+        sha256 = "1f9q00fz1v20njw6584741iqk3s9h3l15p9cxhicpggbldaxq1w5";
+      };
+    }))
+
+    # my custom build of dwmblocks
+    (dwmblocks.overrideAttrs (oldAttrs: rec {
+      src = builtins.fetchTarball {
+        url    = "${userSourceHut}/dwmblocks/archive/master.tar.gz";
+        sha256 = "1h0zsrwjcnvy0lg15c3hkfgmj9zpmfj71c6k313s92q31p2azhir";
+      };
+    }))
+
     # my custom build of st
     (st.overrideAttrs (oldAttrs: rec {
       src = builtins.fetchTarball {
-        url    = "${userGitlab}/st/-/archive/master/st-master.tar.gz";
+        url    = "${userSourceHut}/st/archive/master.tar.gz";
         sha256 = "0swzahzlls9vwa44vkb0wq1p47mad29ah3yhjqxax799x040kiv0";
       };
 
@@ -284,7 +301,7 @@ in
     # my custom build of dmenu
     (dmenu.overrideAttrs (oldAttrs: rec {
       src = builtins.fetchTarball {
-        url    = "${userGitlab}/dmenu/-/archive/main/dmenu-main.tar.gz";
+        url    = "${userSourceHut}/dmenu/archive/main.tar.gz";
         sha256 = "0jmvzwym3pidsbncl7rd5y0jlpdkbj07f0627x2sqpkgh31g6k8y";
       };
     }))
