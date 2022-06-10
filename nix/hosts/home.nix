@@ -178,21 +178,6 @@ in
             "privacy.usercontext.about_newtab_segregation.enabled" = true;
             "security.ssl.disable_session_identifiers" = true;
             "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite" = false;
-            "toolkit.telemetry.archive.enabled" = false;
-            "toolkit.telemetry.bhrPing.enabled" = false;
-            "toolkit.telemetry.cachedClientID" = "";
-            "toolkit.telemetry.enabled" = false;
-            "toolkit.telemetry.firstShutdownPing.enabled" = false;
-            "toolkit.telemetry.hybridContent.enabled" = false;
-            "toolkit.telemetry.newProfilePing.enabled" = false;
-            "toolkit.telemetry.prompted" = 2;
-            "toolkit.telemetry.rejected" = true;
-            "toolkit.telemetry.reportingpolicy.firstRun" = false;
-            "toolkit.telemetry.server" = "";
-            "toolkit.telemetry.shutdownPingSender.enabled" = false;
-            "toolkit.telemetry.unified" = false;
-            "toolkit.telemetry.unifiedIsOptIn" = false;
-            "toolkit.telemetry.updatePing.enabled" = false;
             "webgl.disabled" = true;
             "webgl.renderer-string-override" = " ";
             "webgl.vendor-string-override" = " ";
@@ -248,6 +233,13 @@ in
 
     # editors
     emacsNativeComp
+
+    # LaTeX
+    # minimal configuration for Emacs Org export via pandoc/xelatex
+    (texlive.combine {
+      inherit (texlive) scheme-small dvisvgm dvipng wrapfig amsmath ulem
+        hyperref capt-of;
+    })
 
     # X11
     sxhkd

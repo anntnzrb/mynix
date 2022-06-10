@@ -185,6 +185,7 @@
       mononoki
       noto-fonts-emoji
       symbola
+      times-newer-roman
     ];
   };
 
