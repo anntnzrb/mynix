@@ -274,7 +274,7 @@ in
     # my custom build of dwm
     (dwm.overrideAttrs (oldAttrs: rec {
       src = builtins.fetchTarball {
-        url    = "${userSourceHut}/dwm/archive/main.tar.gz";
+        url    = "${userSourceHut}/dwm/archive/master.tar.gz";
         sha256 = "1f9q00fz1v20njw6584741iqk3s9h3l15p9cxhicpggbldaxq1w5";
       };
     }))
