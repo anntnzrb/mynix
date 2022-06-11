@@ -3,7 +3,7 @@
 { config, lib, pkgs, user, inputs, ... }:
 
 let
-  userGitlab = "https://gitlab.com/anntnzrb";
+  userGitLab = "https://gitlab.com/anntnzrb";
   userSourceHut = "https://git.sr.ht/~anntnzrb";
 in
 {
@@ -273,25 +273,25 @@ in
 
     # my custom build of dwm
     (dwm.overrideAttrs (oldAttrs: rec {
-      src = builtins.fetchTarball {
-        url    = "${userSourceHut}/dwm/archive/master.tar.gz";
-        sha256 = "1f9q00fz1v20njw6584741iqk3s9h3l15p9cxhicpggbldaxq1w5";
+      src = fetchgit {
+        url    = "${userGitLab}/dwm";
+        sha256 = "A4jWpLdFRuXuL4TlF8z4O5IVCm3shh7MVpQqnqyIr2A=";
       };
     }))
 
-    # my custom build of dwmblocks
-    (dwmblocks.overrideAttrs (oldAttrs: rec {
-      src = builtins.fetchTarball {
-        url    = "${userSourceHut}/dwmblocks/archive/master.tar.gz";
-        sha256 = "1h0zsrwjcnvy0lg15c3hkfgmj9zpmfj71c6k313s92q31p2azhir";
+     # my custom build of dwmblocks
+     (dwmblocks.overrideAttrs (oldAttrs: rec {
+      src = fetchgit {
+        url    = "${userGitLab}/dwmblocks";
+        sha256 = "No9hx+V75+2VENRQLfRl0vWC/t89C9+RFfVr+9HFtks=";
       };
-    }))
+     }))
 
     # my custom build of st
     (st.overrideAttrs (oldAttrs: rec {
-      src = builtins.fetchTarball {
-        url    = "${userSourceHut}/st/archive/master.tar.gz";
-        sha256 = "0swzahzlls9vwa44vkb0wq1p47mad29ah3yhjqxax799x040kiv0";
+      src = fetchgit {
+        url    = "${userGitLab}/st";
+        sha256 = "YMcJCOgpna46ltAPqJJoqh5yA+ZgzU2I4jtpSj9Un2s=";
       };
 
       # dependencies
@@ -300,9 +300,9 @@ in
 
     # my custom build of dmenu
     (dmenu.overrideAttrs (oldAttrs: rec {
-      src = builtins.fetchTarball {
-        url    = "${userSourceHut}/dmenu/archive/main.tar.gz";
-        sha256 = "0jmvzwym3pidsbncl7rd5y0jlpdkbj07f0627x2sqpkgh31g6k8y";
+      src = fetchgit {
+        url    = "${userGitLab}/dmenu";
+        sha256 = "Hk3zwoBvXqxFP8IAd4Bcs10qgS8tH8rs0i3eUT3/u0o=";
       };
     }))
   ];
