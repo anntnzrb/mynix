@@ -131,6 +131,7 @@
 
     # utils
     atool rar unrar unzip zip
+    direnv
     fzf
     htop
     tree
@@ -170,6 +171,7 @@
       iosevka
       jetbrains-mono
       mononoki
+      nerdfonts
       noto-fonts-emoji
       symbola
       times-newer-roman
