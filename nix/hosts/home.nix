@@ -213,34 +213,11 @@ in
   };
 
   home.packages = with pkgs; [
-    # apps
-    alacritty
-    feh
-    joplin-desktop
-    mpv
-    pcmanfm
-    zathura
+    # audio
+    pamixer pasystray pulsemixer
 
-    # misc
-    redshift
-
-    # utils
-    bitwarden-cli
-    chezmoi
-    maim
-    neofetch
-    screenkey
-    yt-dlp
-
-    # editors
-    emacsNativeComp
-
-    # LaTeX
-    # minimal configuration for Emacs Org export via pandoc/xelatex
-    (texlive.combine {
-      inherit (texlive) scheme-small dvisvgm dvipng wrapfig amsmath ulem
-        hyperref capt-of;
-    })
+    # network
+    networkmanagerapplet
 
     # X11
     sxhkd
@@ -250,25 +227,38 @@ in
     xdotool
     xorg.xbacklight
 
+    # apps
+    alacritty
+    bitwarden-cli
+    feh
+    joplin-desktop
+    mpv
+    pcmanfm
+    redshift
+    yt-dlp
+    zathura
+
+    # editors
+    emacsNativeComp
+
     # tools
-    aspell
-    aspellDicts.en
-    aspellDicts.es
-    aspellDicts.de
+    aspell aspellDicts.de aspellDicts.en aspellDicts.es
+    bat exa fd ripgrep # rust-coreutils
+    dconf              # GTK-themes
+    imagemagick
+    maim
+    neofetch
+    screenkey
 
-    # other
-    dconf # GTK-themes
-
-    # audio
-    pamixer
-    pasystray
-    pulsemixer
-
-    # network
-    networkmanagerapplet
+    # LaTeX
+    # minimal configuration for Emacs Org export via pandoc/xelatex
+    (texlive.combine {
+      inherit (texlive) scheme-small dvisvgm dvipng wrapfig amsmath ulem
+        hyperref capt-of;
+    })
 
     # -------------------------------------------------------------------------
-    # overrides & overlays
+    # overrides / overlays / manual stuff
     # -------------------------------------------------------------------------
 
     # my custom build of dwm

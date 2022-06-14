@@ -68,8 +68,8 @@
   ## general rules, e.g: X11 not to launch automatically, disable DM, etc...
 
   services.xserver = {
-    enable                       = true;
-    autorun                      = false;
+    enable  = true;
+    autorun = false;
     displayManager.startx.enable = true;
 
     # libinput
@@ -124,35 +124,22 @@
 
   environment.systemPackages = with pkgs; [
     # essentials
-    curl
+    coreutils-full file
+    curl wget
     git
     gnumake
-    wget
-
-    # core utils
-    coreutils-full
-    bat
-    exa
-    fd
-    ripgrep
 
     # utils
-    atool
-    file
+    atool rar unrar unzip zip
     fzf
     htop
-    imagemagick
-    rar
-    tldr
     tree
-    unrar
-    unzip
-    zip
 
     # manuals
     man
     man-pages
     man-pages-posix
+    tldr
 
     # editors
     vim
