@@ -13,9 +13,8 @@ in {
   # ---------------------------------------------------------------------------
 
   boot = {
-    initrd.availableKernelModules = [
-      "ahci" "xhci_pci" "usb_storage" "sd_mod"
-    ];
+    initrd.availableKernelModules =
+      [ "ahci" "xhci_pci" "usb_storage" "sd_mod" ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
@@ -24,19 +23,15 @@ in {
   # ---------------------------------------------------------------------------
 
   fileSystems."/" = {
-    device  = "/dev/disk/by-label/${rootLabel}";
-    label   = "${rootLabel}";
-    fsType  = "btrfs";
-    options = [
-      "noatime"
-      "space_cache=v2"
-      "compress=zstd"
-    ];
+    device = "/dev/disk/by-label/${rootLabel}";
+    label = "${rootLabel}";
+    fsType = "btrfs";
+    options = [ "noatime" "space_cache=v2" "compress=zstd" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/${bootLabel}";
-    label  = "${bootLabel}";
+    label = "${bootLabel}";
     fsType = "vfat";
   };
 
@@ -45,9 +40,9 @@ in {
   swapDevices = [ ];
 
   zramSwap = {
-    enable         = true;
-    algorithm      = "zstd";
-    memoryPercent  = 50;
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
   };
 
   # ---------------------------------------------------------------------------
@@ -65,7 +60,8 @@ in {
 
   hardware = {
     acpilight.enable = true; # enable brightness control via `xbacklight`
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   # ---------------------------------------------------------------------------

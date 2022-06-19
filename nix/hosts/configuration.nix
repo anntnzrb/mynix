@@ -9,7 +9,7 @@
 
   # careful with this
   system = {
-    stateVersion       = "22.05";
+    stateVersion = "22.05";
     autoUpgrade.enable = false;
   };
 
@@ -18,19 +18,17 @@
   # ---------------------------------------------------------------------------
 
   nix = {
-    settings = {
-      auto-optimise-store = true;
-    };
+    settings = { auto-optimise-store = true; };
 
     # garbage-collector
     gc = {
       automatic = true;
-      dates     = "weekly";
-      options   = "--delete-older-than 30d";
+      dates = "weekly";
+      options = "--delete-older-than 30d";
     };
 
     # enable flakes
-    package      = pkgs.nixFlakes;
+    package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
@@ -39,7 +37,7 @@
   # ---------------------------------------------------------------------------
 
   boot = {
-    cleanTmpDir     = true;
+    cleanTmpDir = true;
     consoleLogLevel = 5;
     # bootloader
     loader = {
@@ -47,12 +45,12 @@
 
       # GRUB :: prefer over systemd-boot for poli-booting
       grub = {
-        enable             = true;
+        enable = true;
         configurationLimit = 10;
-        device             = "nodev"; # because of EFI
-        efiSupport         = true;
-        useOSProber        = true;    # for poli-booting
-        version            = 2;
+        device = "nodev"; # because of EFI
+        efiSupport = true;
+        useOSProber = true; # for poli-booting
+        version = 2;
 
         # enable memory testing on GRUB (unfree program)
         memtest86.enable = true;
@@ -68,7 +66,7 @@
   ## general rules, e.g: X11 not to launch automatically, disable DM, etc...
 
   services.xserver = {
-    enable  = true;
+    enable = true;
     autorun = false;
     displayManager.startx.enable = true;
 
@@ -91,7 +89,7 @@
 
   networking = {
     # useDHCP flag is deprecated, disable it
-    useDHCP               = lib.mkDefault false;
+    useDHCP = lib.mkDefault false;
     networkmanager.enable = true;
   };
 
@@ -100,7 +98,7 @@
   # ---------------------------------------------------------------------------
 
   # set your time zone
-  time.timeZone      = "America/Guayaquil";
+  time.timeZone = "America/Guayaquil";
   i18n.defaultLocale = "en_US.UTF-8";
 
   # ---------------------------------------------------------------------------
@@ -108,10 +106,10 @@
   # ---------------------------------------------------------------------------
 
   users.users.${user} = {
-    isNormalUser    = true;
+    isNormalUser = true;
     initialPassword = "root";
-    extraGroups     = [ "wheel" "networkmanager" ];
-    shell           = pkgs.zsh;
+    extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
   };
 
   # ---------------------------------------------------------------------------
@@ -124,13 +122,19 @@
 
   environment.systemPackages = with pkgs; [
     # essentials
-    coreutils-full file
-    curl wget
+    coreutils-full
+    file
+    curl
+    wget
     git
     gnumake
 
     # utils
-    atool rar unrar unzip zip
+    atool
+    rar
+    unrar
+    unzip
+    zip
     direnv
     fzf
     htop
@@ -146,7 +150,7 @@
     vim
 
     # misc
-    woeusb  # flash Windows iso
+    woeusb # flash Windows iso
   ];
 
   # disable some graphical SSH password asker
@@ -159,8 +163,8 @@
   fonts = {
     enableDefaultFonts = true;
     fontconfig = {
-      enable         = true;
-      antialias      = true;
+      enable = true;
+      antialias = true;
       hinting.enable = true;
     };
     fonts = with pkgs; [
@@ -188,9 +192,9 @@
 
     # audio -- FIXME :: move to home-manager whenever available
     pipewire = {
-      enable       = true;
+      enable = true;
       audio.enable = true;
-      alsa.enable  = true;
+      alsa.enable = true;
       pulse.enable = true;
     };
   };

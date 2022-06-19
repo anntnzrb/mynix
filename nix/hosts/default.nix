@@ -21,16 +21,14 @@ in {
       ./configuration.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs   = true;
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         # flake variables
         home-manager.extraSpecialArgs = { inherit user; };
         home-manager.users.${user} = {
-          imports = [
-            ./home.nix
-            ./munich/home.nix
-          ];
+          imports = [ ./home.nix ./munich/home.nix ];
         };
       }
     ];
@@ -44,10 +42,7 @@ in {
     inherit system;
     # flake variables
     specialArgs = { inherit inputs user; };
-    modules = [
-      ./solna
-      ./configuration.nix
-    ];
+    modules = [ ./solna ./configuration.nix ];
   };
 
   # ---------------------------------------------------------------------------
@@ -63,16 +58,14 @@ in {
       ./configuration.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs   = true;
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         # flake variables
         home-manager.extraSpecialArgs = { inherit user; };
         home-manager.users.${user} = {
-          imports = [
-            ./home.nix
-            ./zadar/home.nix
-          ];
+          imports = [ ./home.nix ./zadar/home.nix ];
         };
       }
     ];

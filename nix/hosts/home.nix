@@ -5,10 +5,9 @@
 let
   userGitLab = "https://gitlab.com/anntnzrb";
   userSourceHut = "https://git.sr.ht/~anntnzrb";
-in
-{
+in {
   home = {
-    username      = "${user}";
+    username = "${user}";
     homeDirectory = "/home/${user}";
 
     # this is unrelated to NixOS itself (don't touch)
@@ -28,7 +27,8 @@ in
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+      url =
+        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
     }))
   ];
 
@@ -37,13 +37,13 @@ in
   # ---------------------------------------------------------------------------
 
   gtk = {
-    enable    = true;
+    enable = true;
     iconTheme = {
-      name    = "Kora";
+      name = "Kora";
       package = pkgs.kora-icon-theme;
     };
     theme = {
-      name    = "Dracula";
+      name = "Dracula";
       package = pkgs.dracula-theme;
     };
   };
@@ -60,8 +60,8 @@ in
     # -------------------------------------------------------------------------
 
     firefox = {
-      enable     = true;
-      package    = pkgs.firefox;
+      enable = true;
+      package = pkgs.firefox;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # tools
         bitwarden
@@ -78,32 +78,32 @@ in
       profiles = {
         default = {
           name = "default";
-          id   = 0;
+          id = 0;
           bookmarks = {
             wikipedia.url = "https://en.wikipedia.org";
 
             # misc
             archwiki = {
-              url   = "https://wiki.archlinux.org";
+              url = "https://wiki.archlinux.org";
               keyword = "aw";
             };
 
             youtube = {
-              url     = "https://youtube.com";
+              url = "https://youtube.com";
               keyword = "yt";
             };
 
             # git
             github = {
-              url     = "https://github.com";
+              url = "https://github.com";
               keyword = "ghub";
             };
             gitlab = {
-              url     = "https://gitlab.com";
+              url = "https://gitlab.com";
               keyword = "glab";
             };
             sourcehut = {
-              url     = "https://git.sr.ht";
+              url = "https://git.sr.ht";
               keyword = "srht";
             };
           };
@@ -112,7 +112,7 @@ in
     };
 
     chromium = {
-      enable          = true;
+      enable = true;
       commandLineArgs = [
         "--disable-gpu" # sometimes causes flickering issues
       ];
@@ -138,7 +138,9 @@ in
 
   home.packages = with pkgs; [
     # audio
-    pamixer pasystray pulsemixer
+    pamixer
+    pasystray
+    pulsemixer
 
     # network
     networkmanagerapplet
@@ -166,9 +168,15 @@ in
     emacsNativeComp
 
     # tools
-    aspell aspellDicts.de aspellDicts.en aspellDicts.es
-    bat exa fd ripgrep # rust-coreutils
-    dconf              # GTK-themes
+    aspell
+    aspellDicts.de
+    aspellDicts.en
+    aspellDicts.es
+    bat
+    exa
+    fd
+    ripgrep # rust-coreutils
+    dconf # GTK-themes
     imagemagick
     maim
     neofetch
@@ -177,8 +185,8 @@ in
     # LaTeX
     # minimal configuration for Emacs Org export via pandoc/xelatex
     (texlive.combine {
-      inherit (texlive) scheme-small dvisvgm dvipng wrapfig amsmath ulem
-        hyperref capt-of;
+      inherit (texlive)
+        scheme-small dvisvgm dvipng wrapfig amsmath ulem hyperref capt-of;
     })
 
     # -------------------------------------------------------------------------
@@ -188,7 +196,7 @@ in
     # my custom build of dwm
     (dwm.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
-        url    = "${userGitLab}/dwm";
+        url = "${userGitLab}/dwm";
         sha256 = "A4jWpLdFRuXuL4TlF8z4O5IVCm3shh7MVpQqnqyIr2A=";
       };
     }))
@@ -196,7 +204,7 @@ in
     # my custom build of dwmblocks
     (dwmblocks.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
-        url    = "${userGitLab}/dwmblocks";
+        url = "${userGitLab}/dwmblocks";
         sha256 = "No9hx+V75+2VENRQLfRl0vWC/t89C9+RFfVr+9HFtks=";
       };
     }))
@@ -204,7 +212,7 @@ in
     # my custom build of st
     (st.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
-        url    = "${userGitLab}/st";
+        url = "${userGitLab}/st";
         sha256 = "YMcJCOgpna46ltAPqJJoqh5yA+ZgzU2I4jtpSj9Un2s=";
       };
 
@@ -215,7 +223,7 @@ in
     # my custom build of dmenu
     (dmenu.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
-        url    = "${userGitLab}/dmenu";
+        url = "${userGitLab}/dmenu";
         sha256 = "Hk3zwoBvXqxFP8IAd4Bcs10qgS8tH8rs0i3eUT3/u0o=";
       };
     }))

@@ -13,9 +13,8 @@ in {
   # ---------------------------------------------------------------------------
 
   boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"
-    ];
+    initrd.availableKernelModules =
+      [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
     kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
@@ -25,19 +24,15 @@ in {
   # ---------------------------------------------------------------------------
 
   fileSystems."/" = {
-    device  = "/dev/disk/by-label/${rootLabel}";
-    label   = "${rootLabel}";
-    fsType  = "btrfs";
-    options = [
-      "noatime"
-      "space_cache=v2"
-      "compress=zstd"
-    ];
+    device = "/dev/disk/by-label/${rootLabel}";
+    label = "${rootLabel}";
+    fsType = "btrfs";
+    options = [ "noatime" "space_cache=v2" "compress=zstd" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/${bootLabel}";
-    label  = "${bootLabel}";
+    label = "${bootLabel}";
     fsType = "vfat";
   };
 
@@ -46,9 +41,9 @@ in {
   swapDevices = [ ];
 
   zramSwap = {
-    enable         = true;
-    algorithm      = "zstd";
-    memoryPercent  = 35;
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 35;
   };
 
   # ---------------------------------------------------------------------------
@@ -66,13 +61,14 @@ in {
 
   hardware = {
     acpilight.enable = true; # enable brightness control via `xbacklight`
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     # GPU
     nvidia = {
-      package                = config.boot.kernelPackages.nvidiaPackages.stable;
-      nvidiaSettings         = true;
-      modesetting.enable     = true; # TODO :: testing
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      nvidiaSettings = true;
+      modesetting.enable = true; # TODO :: testing
       powerManagement.enable = true; # graphical glitches on suspend fix
     };
   };

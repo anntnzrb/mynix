@@ -4,8 +4,9 @@
 
 {
   home = {
-    packages = with pkgs; [
-      file # ex
-    ];
+    packages = with pkgs;
+      [
+        file # ex
+      ];
   };
 }

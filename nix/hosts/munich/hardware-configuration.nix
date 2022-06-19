@@ -13,10 +13,9 @@ in {
   # ---------------------------------------------------------------------------
 
   boot = {
-    initrd.availableKernelModules = [
-      "vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"
-    ];
-    kernelModules  = [ "kvm-intel" ];
+    initrd.availableKernelModules =
+      [ "vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+    kernelModules = [ "kvm-intel" ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
@@ -25,21 +24,16 @@ in {
   # ---------------------------------------------------------------------------
 
   fileSystems."/" = {
-    device  = "/dev/disk/by-label/${rootLabel}";
-    label   = "${rootLabel}";
-    fsType  = "btrfs";
-    options = [
-      "noatime"
-      "space_cache=v2"
-      "compress=zstd"
-      "ssd"
-      "discard=async"
-    ];
+    device = "/dev/disk/by-label/${rootLabel}";
+    label = "${rootLabel}";
+    fsType = "btrfs";
+    options =
+      [ "noatime" "space_cache=v2" "compress=zstd" "ssd" "discard=async" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/${bootLabel}";
-    label  = "${bootLabel}";
+    label = "${bootLabel}";
     fsType = "vfat";
   };
 
@@ -48,9 +42,9 @@ in {
   swapDevices = [ ];
 
   zramSwap = {
-    enable         = true;
-    algorithm      = "zstd";
-    memoryPercent  = 25;
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 25;
   };
 
   # ---------------------------------------------------------------------------
@@ -68,16 +62,15 @@ in {
 
   hardware = {
     video.hidpi.enable = true;
-    acpilight.enable   = true; # enable brightness control via `xbacklight`
-    bluetooth.enable   = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    acpilight.enable = true; # enable brightness control via `xbacklight`
+    bluetooth.enable = true;
+    cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   # ---------------------------------------------------------------------------
   # network
   # ---------------------------------------------------------------------------
 
-  networking = {
-    interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  };
+  networking = { interfaces.enp3s0.useDHCP = lib.mkDefault true; };
 }
