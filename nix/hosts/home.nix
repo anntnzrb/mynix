@@ -148,6 +148,7 @@ in {
     # X11
     sxhkd
     picom
+    pywal
     unclutter
     xclip
     xdotool

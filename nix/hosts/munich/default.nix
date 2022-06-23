@@ -10,4 +10,6 @@
   # ---------------------------------------------------------------------------
 
   networking.hostName = "munich";
+
+  virtualisation.virtualbox.host.enable = true;
 }

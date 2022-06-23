@@ -108,7 +108,7 @@
   users.users.${user} = {
     isNormalUser = true;
     initialPassword = "root";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "vboxusers" ];
     shell = pkgs.zsh;
   };
 
