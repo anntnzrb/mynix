@@ -198,7 +198,7 @@ in {
     (dwm.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
         url = "${userGitLab}/dwm";
-        sha256 = "A4jWpLdFRuXuL4TlF8z4O5IVCm3shh7MVpQqnqyIr2A=";
+        sha256 = "zhm2rYEV1NdWzf+T1r6n3S5SlNO84VnYcT9tSHljt68=";
       };
     }))
 
@@ -206,7 +206,7 @@ in {
     (dwmblocks.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
         url = "${userGitLab}/dwmblocks";
-        sha256 = "No9hx+V75+2VENRQLfRl0vWC/t89C9+RFfVr+9HFtks=";
+        sha256 = "8JSMngwapKq+0r7lLawGgCtrTziPxamHhtSI6cyy2II=";
       };
     }))
 
@@ -214,7 +214,7 @@ in {
     (st.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
         url = "${userGitLab}/st";
-        sha256 = "YMcJCOgpna46ltAPqJJoqh5yA+ZgzU2I4jtpSj9Un2s=";
+        sha256 = "uxa+AEJjMu2nXrPbV99fFCTHBS2pxNUNm7JxXBQ9GKk=";
       };
 
       # dependencies
@@ -225,7 +225,7 @@ in {
     (dmenu.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
         url = "${userGitLab}/dmenu";
-        sha256 = "Hk3zwoBvXqxFP8IAd4Bcs10qgS8tH8rs0i3eUT3/u0o=";
+        sha256 = "0bUeuZ645CZYRgCFO6enwbUgLJp6jLeDCvmIlx0L+eg=";
       };
     }))
   ];

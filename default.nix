@@ -7,6 +7,6 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-   printf "=> nix-shell: set-up for dotfiles management\n"
+   printf "\n=> nix-shell: set-up for dotfiles management\n\n"
   '';
 }

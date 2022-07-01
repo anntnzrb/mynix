@@ -147,7 +147,15 @@
     tldr
 
     # editors
-    vim
+    #vim
+    # VIM9
+    (vim.overrideAttrs (oldAttrs: rec {
+      src = fetchgit {
+        url    = "https://github.com/vim/vim";
+	rev    = "083692d598139228e101b8c521aaef7bcf256e9a";
+	sha256 = "1yb4tUeQaNt9+rvh6EuAzJ+otX3sg91HZYvqPc17th8=";
+      };
+    }))
 
     # misc
     woeusb # flash Windows iso
