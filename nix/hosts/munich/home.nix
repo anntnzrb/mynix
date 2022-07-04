@@ -10,6 +10,9 @@
       # streaming
       streamlink
       chatterino2
+
+      # TODO: move
+      nur.repos.foolnotion.cmake-init
     ];
   };
 }

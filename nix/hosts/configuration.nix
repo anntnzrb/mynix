@@ -13,6 +13,8 @@
     autoUpgrade.enable = false;
   };
 
+  virtualisation.docker.enable = true;
+
   # ---------------------------------------------------------------------------
   # Nix (the package manager)
   # ---------------------------------------------------------------------------
@@ -108,7 +110,7 @@
   users.users.${user} = {
     isNormalUser = true;
     initialPassword = "root";
-    extraGroups = [ "wheel" "networkmanager" "vboxusers" ];
+    extraGroups = [ "wheel" "networkmanager" "vboxusers" "docker" ];
     shell = pkgs.zsh;
   };
 
