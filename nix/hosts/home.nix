@@ -206,7 +206,7 @@ in {
     (dwmblocks.overrideAttrs (oldAttrs: rec {
       src = fetchgit {
         url = "${userGitLab}/dwmblocks";
-        sha256 = "No9hx+V75+2VENRQLfRl0vWC/t89C9+RFfVr+9HFtks=";
+        sha256 = "B2eDTe09GOIh1ZjAXz6vPt9BH74ZJV08J4zyy7GcuAE=";
       };
     }))
 

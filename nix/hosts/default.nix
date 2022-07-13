@@ -42,7 +42,22 @@ in {
     inherit system;
     # flake variables
     specialArgs = { inherit inputs user; };
-    modules = [ ./solna ./configuration.nix ];
+    modules = [
+      ./solna
+      ./configuration.nix
+      { nixpkgs.overlays = [ nur.overlay ]; }
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        # flake variables
+        home-manager.extraSpecialArgs = { inherit user; };
+        home-manager.users.${user} = {
+          imports = [ ./home.nix ./solna/home.nix ];
+        };
+      }
+    ];
   };
 
   # ---------------------------------------------------------------------------
