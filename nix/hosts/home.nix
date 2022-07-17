@@ -126,7 +126,6 @@ in {
         "gcbommkclmclpchllfjekcdonpmejbdp" # HTTPS Everywhere
         "lckanjgmijmafbedllaakclkaicjfmnk" # ClearURLs
         "mnjggcdmjocbbbhaepdhchncahnbgone" # YouTube SponsorBlock
-        "ponfpcnoihfmfllpaingbgckeeldkhle" # Enhancer for YouTube
         "mpbjkejclgfgadiemmefgebjfooflfhl" # CAPTCHA Solver
 
         # == Twitch
@@ -146,10 +145,10 @@ in {
     networkmanagerapplet
 
     # X11
-    sxhkd
     picom
     pywal
-    unclutter
+    sxhkd
+    xbanish
     xclip
     xdotool
     xorg.xbacklight
