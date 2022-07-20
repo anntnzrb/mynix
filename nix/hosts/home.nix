@@ -145,6 +145,7 @@ in {
     networkmanagerapplet
 
     # X11
+    bspwm
     picom
     pywal
     sxhkd

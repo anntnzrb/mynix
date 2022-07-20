@@ -177,9 +177,6 @@
       iosevka
       jetbrains-mono
       mononoki
-      #nerdfonts
-      #noto-fonts-emoji
-      #symbola
       times-newer-roman
     ];
   };

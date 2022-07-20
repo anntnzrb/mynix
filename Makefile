@@ -51,6 +51,7 @@ all:
 	@printf '===============================================================================\n'
 
 update:
+	nix-channel --update
 	nix flake update
 
 clean:
