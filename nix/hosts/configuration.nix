@@ -124,29 +124,20 @@
 
   environment.systemPackages = with pkgs; [
     # essentials
-    coreutils-full
-    file
-    curl
-    wget
+    coreutils-full file
+    curl wget
     git
     gnumake
 
     # utils
-    atool
-    rar
-    unrar
-    unzip
-    zip
+    atool p7zip rar unrar zip unzip
     direnv
     fzf
     htop
     tree
 
     # manuals
-    man
-    man-pages
-    man-pages-posix
-    tldr
+    man man-pages man-pages-posix
 
     # editors
     vim

@@ -162,19 +162,15 @@ in {
     emacsNativeComp
 
     # tools
-    aspell
-    aspellDicts.de
-    aspellDicts.en
-    aspellDicts.es
-    bat
-    exa
-    fd
-    ripgrep # rust-coreutils
+    aspell aspellDicts.de aspellDicts.en aspellDicts.es
     dconf # GTK-themes
     imagemagick
     maim
     neofetch
     screenkey
+
+    # rust-coreutils
+    bat exa fd ripgrep
 
     # LaTeX
     # minimal configuration for Emacs Org export via pandoc/xelatex
