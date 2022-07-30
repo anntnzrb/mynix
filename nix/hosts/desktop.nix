@@ -1,4 +1,4 @@
-# configuration.nix --- Generic configuration.nix for all hosts
+# desktop.nix --- Desktop configurations for all hosts
 
 { config, lib, pkgs, inputs, user, ... }:
 

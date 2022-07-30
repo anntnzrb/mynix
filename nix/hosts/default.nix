@@ -18,7 +18,7 @@ in {
     specialArgs = { inherit inputs user; };
     modules = [
       ./munich
-      ./configuration.nix
+      ./desktop.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager
@@ -44,7 +44,7 @@ in {
     specialArgs = { inherit inputs user; };
     modules = [
       ./solna
-      ./configuration.nix
+      ./desktop.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager
@@ -70,7 +70,7 @@ in {
     specialArgs = { inherit inputs user; };
     modules = [
       ./zadar
-      ./configuration.nix
+      ./desktop.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager
