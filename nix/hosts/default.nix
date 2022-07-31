@@ -78,18 +78,6 @@ in {
     modules = [
       ./zadar
       ./server.nix
-      { nixpkgs.overlays = [ nur.overlay ]; }
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        # flake variables
-        home-manager.extraSpecialArgs = { inherit user; };
-        home-manager.users.${user} = {
-          imports = [ ./zadar/home.nix ];
-        };
-      }
     ];
   };
 }
