@@ -1,6 +1,6 @@
 # home.nix --- Generic Home-Manager configuration for all hosts
 
-{ config, lib, pkgs, user, inputs, ... }:
+{ pkgs, user, inputs, ... }:
 
 let
   userGitLab = "https://gitlab.com/anntnzrb";

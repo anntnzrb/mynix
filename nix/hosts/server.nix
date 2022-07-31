@@ -1,6 +1,7 @@
 # server.nix --- Server configurations for all hosts
 
-{ config, lib, pkgs, inputs, user, ... }:
+{ user,
+  ... }:
 
 {
   imports = [ ./shared.nix ];

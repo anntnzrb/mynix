@@ -1,6 +1,8 @@
 # shared.nix --- (Server + Desktop) configurations for all hosts
 
-{ config, lib, pkgs, inputs, user, ... }:
+{ lib,
+  pkgs,
+  ... }:
 
 {
   # ---------------------------------------------------------------------------
