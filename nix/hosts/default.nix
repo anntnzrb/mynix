@@ -1,6 +1,13 @@
 # default.nix --- Declaration of hosts
 
-{ self, lib, inputs, nixpkgs, nur, home-manager, user, ... }:
+{ self,
+  home-manager,
+  inputs,
+  lib,
+  nixpkgs,
+  nur,
+  user,
+  ... }:
 
 let
   system = "x86_64-linux";
