@@ -1,6 +1,6 @@
 # desktop.nix --- Desktop configurations for all hosts
 
-{ config, lib, pkgs, inputs, user, ... }:
+{ pkgs, inputs, user, ... }:
 
 {
   imports = [ ./shared.nix ];
