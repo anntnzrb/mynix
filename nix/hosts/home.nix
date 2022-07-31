@@ -124,8 +124,9 @@ in {
         "mpbjkejclgfgadiemmefgebjfooflfhl" # CAPTCHA Solver
 
         # == Twitch
-        "ajopnjidmegmdimjlfnijceegpefgped" # BetterTTV
+       #"ajopnjidmegmdimjlfnijceegpefgped" # BetterTTV
         "fadndhdgpmmaapbmfcknlfgcflmmmieb" # FrankerFaceZ
+        "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
       ];
     };
   };
