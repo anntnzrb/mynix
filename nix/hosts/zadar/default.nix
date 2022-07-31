@@ -16,16 +16,6 @@
   # ---------------------------------------------------------------------------
 
   services = {
-    xserver = {
-      videoDrivers = [ "nvidia" ];
-
-      # libinput
-      libinput = {
-        enable = true;
-        touchpad.accelProfile = "flat";
-      };
-    };
-
     # TLP (power management for laptops)
     tlp.enable = true;
   };

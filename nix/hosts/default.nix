@@ -77,7 +77,7 @@ in {
     specialArgs = { inherit inputs user; };
     modules = [
       ./zadar
-      ./desktop.nix
+      ./server.nix
       { nixpkgs.overlays = [ nur.overlay ]; }
 
       home-manager.nixosModules.home-manager
@@ -87,7 +87,7 @@ in {
         # flake variables
         home-manager.extraSpecialArgs = { inherit user; };
         home-manager.users.${user} = {
-          imports = [ ./home.nix ./zadar/home.nix ];
+          imports = [ ./zadar/home.nix ];
         };
       }
     ];

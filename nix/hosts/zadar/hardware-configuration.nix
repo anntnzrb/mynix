@@ -60,17 +60,17 @@ in {
   # ---------------------------------------------------------------------------
 
   hardware = {
-    acpilight.enable = true; # enable brightness control via `xbacklight`
+    #acpilight.enable = true; # enable brightness control via `xbacklight`
     cpu.intel.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    # GPU
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      nvidiaSettings = true;
-      modesetting.enable = true; # TODO :: testing
-      powerManagement.enable = true; # graphical glitches on suspend fix
-    };
+    ## GPU
+    #nvidia = {
+    #  package = config.boot.kernelPackages.nvidiaPackages.stable;
+    #  nvidiaSettings = true;
+    #  modesetting.enable = true; # TODO :: testing
+    #  powerManagement.enable = true; # graphical glitches on suspend fix
+    #};
   };
 
   # ---------------------------------------------------------------------------
