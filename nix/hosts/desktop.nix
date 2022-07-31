@@ -3,7 +3,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 
 {
-  imports = [ "./shared.nix" ];
+  imports = [ ./shared.nix ];
 
   # ---------------------------------------------------------------------------
   # system
@@ -29,6 +29,27 @@
       mouse.accelProfile = "flat";
     };
   };
+
+  # ---------------------------------------------------------------------------
+  # users
+  # ---------------------------------------------------------------------------
+
+  users.users.${user} = {
+    isNormalUser    = true;
+    initialPassword = "root";
+    extraGroups     = [ "wheel" "networkmanager" "vboxusers" "docker" ];
+    shell = pkgs.zsh;
+  };
+
+  # ---------------------------------------------------------------------------
+  # packages
+  # ---------------------------------------------------------------------------
+  # the following should be essential-only packages
+
+  environment.systemPackages = with pkgs; [
+    # misc
+    woeusb # flash Windows iso
+  ];
 
   # ---------------------------------------------------------------------------
   # fonts

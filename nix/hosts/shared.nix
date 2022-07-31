@@ -9,7 +9,7 @@
 
   # careful with this
   system = {
-    stateVersion = "22.05";
+    stateVersion       = "22.05";
     autoUpgrade.enable = false;
   };
 
@@ -18,17 +18,19 @@
   # ---------------------------------------------------------------------------
 
   nix = {
-    settings = { auto-optimise-store = true; };
+    settings = {
+      auto-optimise-store = true;
+    };
 
     # garbage-collector
     gc = {
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
+      dates     = "weekly";
+      options   = "--delete-older-than 30d";
     };
 
     # enable flakes
-    package = pkgs.nixFlakes;
+    package      = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
@@ -37,23 +39,21 @@
   # ---------------------------------------------------------------------------
 
   boot = {
-    cleanTmpDir = true;
+    cleanTmpDir     = true;
     consoleLogLevel = 5;
+
     # bootloader
     loader = {
       efi.canTouchEfiVariables = true;
 
       # GRUB :: prefer over systemd-boot for poli-booting
       grub = {
-        enable = true;
+        enable             = true;
+        device             = "nodev"; # because of EFI
+        version            = 2;
+        efiSupport         = true;
+        useOSProber        = true;    # for poli-booting
         configurationLimit = 10;
-        device = "nodev"; # because of EFI
-        efiSupport = true;
-        useOSProber = true; # for poli-booting
-        version = 2;
-
-        # enable memory testing on GRUB (unfree program)
-        memtest86.enable = true;
       };
     };
   };
@@ -70,7 +70,7 @@
 
   networking = {
     # useDHCP flag is deprecated, disable it
-    useDHCP = lib.mkDefault false;
+    useDHCP               = lib.mkDefault false;
     networkmanager.enable = true;
   };
 
@@ -79,19 +79,8 @@
   # ---------------------------------------------------------------------------
 
   # set your time zone
-  time.timeZone = "America/Guayaquil";
+  time.timeZone      = "America/Guayaquil";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # ---------------------------------------------------------------------------
-  # users
-  # ---------------------------------------------------------------------------
-
-  users.users.${user} = {
-    isNormalUser = true;
-    initialPassword = "root";
-    extraGroups = [ "wheel" "networkmanager" "vboxusers" "docker" ];
-    shell = pkgs.zsh;
-  };
 
   # ---------------------------------------------------------------------------
   # packages
@@ -120,9 +109,6 @@
 
     # editors
     vim
-
-    # misc
-    woeusb # flash Windows iso
   ];
 
   # disable some graphical SSH password asker
