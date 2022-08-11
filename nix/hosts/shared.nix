@@ -110,7 +110,7 @@
     man man-pages man-pages-posix
 
     # editors
-    vim
+    neovim
   ];
 
   # disable some graphical SSH password asker

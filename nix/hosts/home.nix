@@ -54,57 +54,57 @@ in {
     # apps
     # -------------------------------------------------------------------------
 
-    firefox = {
-      enable = true;
-      package = pkgs.firefox;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        # tools
-        bitwarden
-        buster-captcha-solver
-        clearurls
-        darkreader
-        https-everywhere
-        ublock-origin
-        vimium
+   #firefox = {
+   #  enable = true;
+   #  package = pkgs.firefox;
+   #  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+   #    # tools
+   #    bitwarden
+   #    buster-captcha-solver
+   #    clearurls
+   #    darkreader
+   #    https-everywhere
+   #    ublock-origin
+   #    vimium
 
-        # twitch
-        betterttv
-      ];
-      profiles = {
-        default = {
-          name = "default";
-          id = 0;
-          bookmarks = {
-            wikipedia.url = "https://en.wikipedia.org";
+   #    # twitch
+   #    betterttv
+   #  ];
+   #  profiles = {
+   #    default = {
+   #      name = "default";
+   #      id = 0;
+   #      bookmarks = {
+   #        wikipedia.url = "https://en.wikipedia.org";
 
-            # misc
-            archwiki = {
-              url = "https://wiki.archlinux.org";
-              keyword = "aw";
-            };
+   #        # misc
+   #        archwiki = {
+   #          url = "https://wiki.archlinux.org";
+   #          keyword = "aw";
+   #        };
 
-            youtube = {
-              url = "https://youtube.com";
-              keyword = "yt";
-            };
+   #        youtube = {
+   #          url = "https://youtube.com";
+   #          keyword = "yt";
+   #        };
 
-            # git
-            github = {
-              url = "https://github.com";
-              keyword = "ghub";
-            };
-            gitlab = {
-              url = "https://gitlab.com";
-              keyword = "glab";
-            };
-            sourcehut = {
-              url = "https://git.sr.ht";
-              keyword = "srht";
-            };
-          };
-        };
-      };
-    };
+   #        # git
+   #        github = {
+   #          url = "https://github.com";
+   #          keyword = "ghub";
+   #        };
+   #        gitlab = {
+   #          url = "https://gitlab.com";
+   #          keyword = "glab";
+   #        };
+   #        sourcehut = {
+   #          url = "https://git.sr.ht";
+   #          keyword = "srht";
+   #        };
+   #      };
+   #    };
+   #  };
+   #};
 
     chromium = {
       enable = true;

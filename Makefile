@@ -52,9 +52,11 @@ all:
 
 update:
 	nix-channel --update
+	nix-env -u --always
 	nix flake update
 
 clean:
+	nix-collect-garbage -d
 	nix-env --delete-generations old
 	nix-store --gc
 

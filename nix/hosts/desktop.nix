@@ -69,7 +69,7 @@
       fira-code
       font-awesome
       inconsolata
-      iosevka
+      iosevka-bin
       jetbrains-mono
       mononoki
       times-newer-roman
