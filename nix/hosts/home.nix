@@ -122,11 +122,13 @@ in {
         "lckanjgmijmafbedllaakclkaicjfmnk" # ClearURLs
         "mnjggcdmjocbbbhaepdhchncahnbgone" # YouTube SponsorBlock
         "mpbjkejclgfgadiemmefgebjfooflfhl" # CAPTCHA Solver
+        "gbmdgpbipfallnflgajpaliibnhdgobh" # JSON Viewer
 
-        # == Twitch
+        # == Twitch & Media
        #"ajopnjidmegmdimjlfnijceegpefgped" # BetterTTV
         "fadndhdgpmmaapbmfcknlfgcflmmmieb" # FrankerFaceZ
         "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
+        "cankofcoohmbhfpcemhmaaeennfbnmgp" # Netflix 1080p
       ];
     };
   };
