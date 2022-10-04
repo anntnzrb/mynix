@@ -12,4 +12,10 @@
   networking.hostName = "munich";
 
   virtualisation.virtualbox.host.enable = true;
+
+  # ---------------------------------------------------------------------------
+  # services
+  # ---------------------------------------------------------------------------
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 }

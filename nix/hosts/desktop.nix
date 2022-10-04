@@ -8,12 +8,6 @@
   imports = [ ./shared.nix ];
 
   # ---------------------------------------------------------------------------
-  # system
-  # ---------------------------------------------------------------------------
-
-  virtualisation.docker.enable = true;
-
-  # ---------------------------------------------------------------------------
   # windowing system
   # ---------------------------------------------------------------------------
   # X11
@@ -39,7 +33,7 @@
   users.users.${user} = {
     isNormalUser    = true;
     initialPassword = "root";
-    extraGroups     = [ "wheel" "networkmanager" "vboxusers" "docker" ];
+    extraGroups     = [ "wheel" "networkmanager" "vboxusers" ];
     shell = pkgs.zsh;
   };
 
