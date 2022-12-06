@@ -7,6 +7,9 @@
 {
   imports = [ ./shared.nix ];
 
+  # docker
+  virtualisation.docker.enable = true;
+
   # ---------------------------------------------------------------------------
   # windowing system
   # ---------------------------------------------------------------------------
@@ -33,7 +36,7 @@
   users.users.${user} = {
     isNormalUser    = true;
     initialPassword = "root";
-    extraGroups     = [ "wheel" "networkmanager" "vboxusers" ];
+    extraGroups     = [ "wheel" "networkmanager" "vboxusers" "docker" ];
     shell = pkgs.zsh;
   };
 
